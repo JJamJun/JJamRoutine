@@ -9,6 +9,9 @@ import 'package:timezone/timezone.dart' as tz;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
+  tz.initializeTimeZones();
+  tz.setLocalLocation(tz.getLocation('Asia/Seoul'));
+
   runApp(const MyApp());
 }
 
@@ -121,7 +124,6 @@ class SetupAlert extends StatelessWidget {
     );
   }
 }
-
 class AlertList extends StatelessWidget {
   const AlertList({super.key});
 
@@ -138,7 +140,17 @@ class AlertList extends StatelessWidget {
     );
   }
 }
+showNotification() async {
+  tz.initializeTimeZones();
 
+  var androidDetails = const AndroidNotificationDetails(
+      '유니크한 알림 ID가 뭐임?',
+      '알림종류 설명?',
+    priority: Priority.high,
+    importance: Importance.max,
+    color: Colors.red,
+  );
+}
 
 
 
