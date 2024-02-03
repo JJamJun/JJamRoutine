@@ -140,6 +140,7 @@ class AlertList extends StatelessWidget {
     );
   }
 }
+
 showNotification() async {
   tz.initializeTimeZones();
 
@@ -150,9 +151,15 @@ showNotification() async {
     importance: Importance.max,
     color: Colors.red,
   );
+
+  var iosDetails = const DarwinNotificationDetails(
+    presentAlert:  true,
+    presentBadge: true,
+    presentSound: true,
+  );
+
+  // tz.TZDateTime.now(tz.local)
+
 }
-
-
-
 
 
